@@ -16,3 +16,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.image {
+    width: 200px;
+}
+
+.title {
+    color: red;
+}
