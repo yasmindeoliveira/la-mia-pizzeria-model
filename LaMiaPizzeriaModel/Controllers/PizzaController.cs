@@ -1,6 +1,7 @@
 ﻿using LaMiaPizzeriaModel.Models;
 using LaMiaPizzeriaModel.Utils;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 
 namespace LaMiaPizzeriaModel.Controllers
 {
@@ -13,6 +14,20 @@ namespace LaMiaPizzeriaModel.Controllers
             return View("Index", pizzas);
         }
 
-        
+        public IActionResult Dettagli(string nome)
+        {
+            List<Pizza> pizzas = PizzaData.GetPizzas();
+
+            foreach (Pizza pizza in pizzas)
+            {
+                if (pizza.nome == nome)
+                {
+                    return View(pizza);
+                }
+            }
+
+            return NotFound("La pizza con il nome cercato non è disponibile");
+        }
+
     }
 }
